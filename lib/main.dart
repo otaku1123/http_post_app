@@ -39,6 +39,12 @@ class ChangeFormState extends State<ChangeForm> {
     });
   }
 
+  void _handlePressed() {
+    setState(() {
+      debugPrint('onPressed');
+    });
+  }
+
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(50.0),
@@ -58,6 +64,14 @@ class ChangeFormState extends State<ChangeForm> {
             maxLines: 1,
             onChanged: handleText,
           ),
+          FlatButton(
+            onPressed: _handlePressed,
+            color: Colors.blue,
+            child: Text(
+              'GET',
+              style: TextStyle(color: Colors.white, fontSize: 20.0),
+            ),
+          )
         ],
       ),
     );
