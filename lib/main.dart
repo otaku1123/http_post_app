@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;
 
 void main() => runApp(MyApp());
 
@@ -41,8 +41,24 @@ class ChangeFormState extends State<ChangeForm> {
 
   void _handlePressed() {
     setState(() {
-      debugPrint('onPressed');
+      // debugPrint(text);
+      getPosts();
     });
+  }
+
+  Future<http.Response> getPosts() async {
+    // var client = http.Client();
+    try {
+      // final urlResponse = await client.post(text);
+      final urlResponse = await http.get(text);
+      debugPrint('Response status: ${urlResponse.statusCode}');
+      debugPrint('Response body: ${urlResponse.body}');
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      // debugPrint(urlResponse);
+      // client.close();
+    }
   }
 
   Widget build(BuildContext context) {
